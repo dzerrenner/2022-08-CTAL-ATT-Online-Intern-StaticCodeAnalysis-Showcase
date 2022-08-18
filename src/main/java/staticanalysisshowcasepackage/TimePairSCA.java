@@ -1,9 +1,12 @@
 package staticanalysisshowcasepackage;
 
+// Fehlercodes als ENUM?
+
 public class TimePairSCA {
 
     public double getTimeDifference(String startTime, String endTime) {
-
+        // Prüfung Eingabe
+        
         int aTimeDifference;
 
         int positionOfColon = -1; int timeInMin = 0;
@@ -62,11 +65,11 @@ public class TimePairSCA {
 
     public double getPauseTime(String startTime, String endTime) {
 
-        double timeDifference = new TimePairSCA().getTimeDifference(startTime, endTime);
+        double timeDifference = new TimePairSCA().getTimeDifference(startTime, endTime);  // ggf. Klassenmethode oder direkt aurufen
 
         long pauseTime = 0.0;
 
-        if (timeDifference >= 6.0) {
+        if (timeDifference >= 6.0) {  // fachlicher Fehler: es muss <= 6.0 sein
             pauseTime = 0.0;
         } else if (timeDifference > 6.0 && timeDifference <= 6.5) {
             pauseTime = timeDifference - 6.0;
