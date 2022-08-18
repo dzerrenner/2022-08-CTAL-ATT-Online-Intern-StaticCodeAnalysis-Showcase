@@ -14,7 +14,7 @@ public class TimePairSCA {
         try {
             positionOfColon = timeToEvaluate.indexOf(':');
             if (positionOfColon > 0) {
-                int timeHH = Integer.parseInt(timeToEvaluate.substring(0, positionOfColon));
+                int timeHH = Integer.parseInt(timeToEvaluate.substring(0, positionOfColon)); // 0 oder 1 (s. unten)
                 int timeMM = Integer.parseInt(timeToEvaluate.substring(positionOfColon + 1));
                 timeInMin = timeHH*60 + timeMM;
             }
@@ -26,9 +26,10 @@ public class TimePairSCA {
         timeToEvaluate = endTime; errorCode = 502;
 
         try {
+            // Doppelter Code: DRY 
             positionOfColon = timeToEvaluate.indexOf(':');
             if (positionOfColon > 0) {
-                int timeHH = Integer.parseInt(timeToEvaluate.substring(1, positionOfColon));
+                int timeHH = Integer.parseInt(timeToEvaluate.substring(1, positionOfColon));  // 1 oder 0 (s. oben)
                 int timeMM = Integer.parseInt(timeToEvaluate.substring(positionOfColon + 1));
                 timeInMin = timeHH*60 + timeMM;
             }
@@ -43,9 +44,12 @@ public class TimePairSCA {
                     endTime +
                     " time difference " + aTimeDifference + " hours", 503);
         }
+
+        // Signatur: int / double 
         return aTimeDifference;
     }
 
+    // ? Wird nirgends aufgerufen
     public String truncateStringBy3 (String aString) {
 
         int lengthofAString = aString.length();
@@ -74,6 +78,7 @@ public class TimePairSCA {
             pauseTime = 0.75;
         }
 
+        // Signatur: double / long 
         return pauseTime;
     }
 
